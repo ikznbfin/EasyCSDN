@@ -6,11 +6,11 @@
 
 <br>
 
-<img alt="version" src="https://img.shields.io/greasyfork/v/480668?style=for-the-badge&label=%E7%89%88%E6%9C%AC&logo=velog&logoColor=BE95FF&color=7B68EE"></img>
-<img alt="download" src="https://img.shields.io/greasyfork/dt/480668?style=for-the-badge&label=%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%87%8F&logo=bilibili&logoColor=78FF96"></img>
-<img alt="stars" src="https://img.shields.io/github/stars/xcanwin/EasyCSDN?style=for-the-badge&label=Stars&logo=undertale&logoColor=red&color=orange"></img>
-<img alt="forks" src="https://img.shields.io/github/forks/xcanwin/EasyCSDN?style=for-the-badge&label=Forks&logo=stackshare&logoColor=green&color=0AC18E"></img>
+<img alt="version" src="https://img.shields.io/badge/版本-33.0-7B68EE?style=for-the-badge&label=%E7%89%88%E6%9C%AC&logo=velog&logoColor=BE95FF"></img>
+<img alt="stars" src="https://img.shields.io/github/stars/ikznbfin/EasyCSDN?style=for-the-badge&label=Stars&logo=undertale&logoColor=red&color=orange"></img>
+<img alt="forks" src="https://img.shields.io/github/forks/ikznbfin/EasyCSDN?style=for-the-badge&label=Forks&logo=stackshare&logoColor=green&color=0AC18E"></img>
 <img alt="javascript" src="https://img.shields.io/badge/JavaScript-%3E%3DES13-green?style=for-the-badge&label=JavaScript&logo=JavaScript&color=FDEE21"></img>
+<img alt="license" src="https://img.shields.io/badge/License-GPL--2.0--only-blue?style=for-the-badge"></img>
 
 </div></center>
 
@@ -18,77 +18,57 @@
 
 ## 项目简介
 
-> **Fork 维护说明（v33.0, 2026-10-14）**：原项目已三年未更新，针对新版 CSDN 页面做了适配：`#toolbarBox` 改名为 `#toolBarBox`（顶部菜单栏重新可隐藏）；`beautyLOGO()` 加空指针保护（新版页面无 `.article-type-img`，此前会导致整个 `onload` 链崩溃、展开代码/显示推荐功能全部失效）；`window.onload` 改为 `addEventListener` 避免覆盖页面自身处理器；`showRecommend()`/`hookXHR()` 加防御性判断。净化、推荐开关、URL 净化等核心功能已用真实页面验证可用。
+EasyCSDN 是一款让 CSDN 文章页变得极致简洁高效的 Tampermonkey 油猴脚本：隐藏登录弹窗、顶栏、侧边栏、推荐流等一切干扰元素，文章正文全屏居中展示，支持一键临时查看推荐、自动展开代码块、净化 URL 追踪参数。
 
-- 喜欢这个插件的小伙伴，可以给我的GITHUB项目 [EasyCSDN](https://github.com/xcanwin/EasyCSDN) 点个⭐️STAR支持一下。
-- 这是一款促进 `CSDN` 极致简洁和高效的插件。免费共享大量创新功能，如：净化页面、展示全屏、显示推荐、复制文本、展开代码、阅读全文等。让我们的学习体验无比简洁、专注、高效、畅快。
-- `知乎` 和 `CSDN` 和 `简书` 和 `博客园` 是技术覆盖面非常广的学习网站，推荐安装作者共享的 `Easy系列` 插件：[EasyZHIHU](https://github.com/xcanwin/EasyZHIHU/) 与 [EasyCSDN](https://github.com/xcanwin/EasyCSDN/) 与 [EasyJIANSHU](https://github.com/xcanwin/EasyJIANSHU/) 与 [EasyCNBLOGS](https://github.com/xcanwin/EasyCNBLOGS/)。
+本仓库是 [xcanwin/EasyCSDN](https://github.com/xcanwin/EasyCSDN) 的 fork。上游已三年未更新，CSDN 页面结构大改后原版部分功能失效，本 fork 针对新版页面做了适配维护（见[更新日志](#更新日志)）。
 
-## 展示
-
-- 随机找篇 [CSDN文章](https://blog.csdn.net/weixin_45767909/article/details/124414409) 进行测试
+## 效果对比
 
 | 对比 | 截图 |
 | --- | --- |
 | 使用前 | <img src="/assets/csdn-before.png" width="750"></img> |
 | 使用后 | <img src="/assets/csdn-after.png" width="750"></img> |
 
-## 功能简介
+> 截图取自原版 README，仅供示意，实际效果以新版页面为准。
 
-1. 支持[净化页面](#关于-净化页面-功能)
-2. 支持[展示全屏](#关于-展示全屏-功能)
-3. 支持[显示推荐](#关于-显示推荐-功能)
-4. 支持[复制文本](#关于-复制文本-功能)
-5. 支持[展开代码](#关于-展开代码-功能)
-6. 支持[阅读全文](#关于-阅读全文-功能)
+## 功能
 
-## 安装渠道
-
-官方渠道✅:
-
-| 序号 | UserScript源 | 备注 |
+| # | 功能 | 说明 |
 | --- | --- | --- |
-| 1 | [Github开源社区](https://raw.githubusercontent.com/xcanwin/EasyCSDN/main/EasyCSDN.user.js) | ✅推荐 |
-| 2 | [GreasyFork开源社区](https://greasyfork.org/zh-CN/scripts/480668-easycsdn) | ✅推荐 |
+| 1 | 净化页面 | 隐藏置顶登录提示/权益弹窗、顶部菜单栏、左右侧边栏、右侧磁吸工具栏、底部网站介绍、打分弹窗、分类标签、专栏推广、技能树、代码块"登录复制"按钮等 |
+| 2 | 展示全屏 | 正文居中、图片居中并限制最大宽度、隐藏背景，还你一个干净的阅读区 |
+| 3 | 显示推荐 | 默认隐藏底部推荐文章，点击页面最底部的灰色条可临时展开查看 |
+| 4 | 展开代码 | 代码块高度小于阈值时自动点击展开（新版 CSDN 代码块默认已展开，此逻辑保留做兼容） |
+| 5 | 阅读全文 | 去掉"阅读全文"折叠限制，直接看全文（新版 CSDN 已默认展开全文，样式保留做兼容） |
+| 6 | 净化 URL | 自动去掉文章链接 `?` 后面的追踪参数，保护隐私 |
+| 7 | 拦截推荐请求 | 拦截 `redisdatarecall.csdn.net/recommend/` 的推荐接口请求，减少干扰 |
 
-## 使用方法
+复制文本不受限请配合作者的另一个项目 [Unlimit-Web](https://github.com/xcanwin/Unlimit-Web/)。
 
-1. 安装`Tampermonkey`，通过 [官网](https://www.tampermonkey.net/)；
-2. 安装`EasyCSDN`，通过 [安装渠道](#安装渠道)；
-3. 访问`CSDN`；
+## 安装
 
-## 关于 净化页面 功能
+1. 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/) 扩展；
+2. 点击下面的安装链接，按提示安装脚本：
 
-- 减少`大量的`置顶遮挡物。
-- 减少`大量的`多余元素。
-- 减少`频繁地`手动关闭遮挡物。
-- 让页面焕然一新，提升体验感。
+👉 [点击安装 EasyCSDN v33.0](https://raw.githubusercontent.com/ikznbfin/EasyCSDN/main/EasyCSDN.user.js)
 
-## 关于 展示全屏 功能
+3. 打开任意 CSDN 文章页（`blog.csdn.net/*/article/details/*`）即可生效，无需任何配置。
 
-- 拓展纵向视野，增加`11行`文本。
-- 拓宽横向视野，增加`48列`文本。
-- 减少`频繁地`上下滚动鼠标。
-- 减少`频繁地`左右滚动鼠标。
-- 释放鼠标手，提升体验感。
+## 更新日志
 
-## 关于 显示推荐 功能
+### v33.0（2026-10-14）
+- 适配新版 CSDN 页面：顶部菜单栏 id 由 `#toolbarBox` 改为 `#toolBarBox`，重新可隐藏
+- 修复致命 bug：新版页面移除了 `.article-type-img`，`beautyLOGO()` 空指针导致整个 `onload` 链崩溃（展开代码、显示推荐全部失效），现已加保护
+- `window.onload` 改为 `addEventListener`，不再覆盖页面自身的加载处理器
+- `showRecommend()` / `hookXHR()` 增加防御性判断，元素缺失时静默跳过
 
-- 默认隐藏`推荐文章`。
-- 通过点击`最底部的灰色框`，临时显示`推荐文章`。
-- 专注阅读，提升体验感。
+### v32.0 及之前
+上游 [xcanwin/EasyCSDN](https://github.com/xcanwin/EasyCSDN) 原始版本。
 
-## 关于 展开代码 功能
+## 致谢
 
-- 首个代码块高度小于浏览器高度180%，则自动展开。
-- 其余代码块高度小于浏览器高度80%，则自动展开。
-- 释放鼠标手，提升体验感。
+- 原作者 [xcanwin](https://github.com/xcanwin/EasyCSDN)，本项目基于其 GPL-2.0-only 开源作品维护。
 
-## 关于 阅读全文 功能
+## License
 
-- 跳过登录，阅读全文。
-- 专注阅读，提升体验感。
-
-## 关于 复制文本 功能
-
-- 使用我另一个GITHUB项目 [Unlimit-Web](https://github.com/xcanwin/Unlimit-Web/)
+GPL-2.0-only，见 [LICENSE](./LICENSE)。
