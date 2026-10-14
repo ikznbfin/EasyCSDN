@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EasyCSDN
 // @description  这是一款促进CSDN极致简洁和高效的插件。免费共享大量创新功能，如：净化页面、展示全屏、显示推荐、复制文本、展开代码等。让我们的学习体验无比简洁、专注、高效、畅快。
-// @version      33.0
+// @version      34.0
 // @author       xcanwin
 // @namespace    https://github.com/xcanwin/EasyCSDN/
 // @supportURL   https://github.com/xcanwin/EasyCSDN/
@@ -119,6 +119,37 @@ main #content_views img {
     height: auto !important;
     overflow: auto !important;
 }
+
+/*文章末尾渐隐遮罩*/
+.article-end {
+    -webkit-mask-image: unset !important;
+    mask-image: unset !important;
+}
+`;
+
+
+    /*广告与推广净化样式(v34.0 新增)*/
+    const purify_style_ads = `
+#dmp_ad_58 /*文中广告位(伪装成推荐条目)*/,
+#kp_box_58 /*文中广告容器*/,
+iframe[src*="kunpeng-sc.csdnimg.cn"] /*CSDN鲲鹏广告平台的所有广告位*/,
+.wwads-img /*万维广告联盟广告图*/,
+.wwads-poweredby /*万维广告"广告"标识*/,
+.wwads-hide /*万维广告关闭按钮*/,
+.recommend-item-box.baiduSearch /*推荐流中的"百度推广"条目*/,
+a[href*="vip_blogleftbanner"] /*左侧栏VIP横幅广告*/,
+.sidecolumn-vip /*右边缘"送VIP"竖条*/,
+#sidecolumn-deepseek /*右边缘DeepSeek体验胶囊*/,
+.sidecolumn-deepseek /*右边缘DeepSeek体验胶囊(兼容)*/,
+#vip-limited-time-offer-box-new /*VIP限时优惠弹窗*/,
+.directory-boxshadow-dialog /*弹窗遮罩*/,
+#csdn-new-user-gift-bubble /*会员新人礼包气泡*/,
+.option-box.styleab /*右边缘客服悬浮按钮*/,
+.ai-abstract-box /*文章顶部AI摘要框*/,
+.btn-code-notes.mdeditor /*代码块"AI写代码"外链按钮*/
+{
+    display: none !important;
+}
 `;
 
 
@@ -157,6 +188,7 @@ body {
     const purifyPage = function() {
         GM_addStyle(purify_style_pc);
         GM_addStyle(purify_style_mb);
+        GM_addStyle(purify_style_ads);
     };
 
     //显示推荐的开关
