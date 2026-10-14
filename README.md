@@ -6,7 +6,7 @@
 
 <br>
 
-<img alt="version" src="https://img.shields.io/badge/版本-34.0-7B68EE?style=for-the-badge&label=%E7%89%88%E6%9C%AC&logo=velog&logoColor=BE95FF"></img>
+<img alt="version" src="https://img.shields.io/badge/版本-34.1-7B68EE?style=for-the-badge&label=%E7%89%88%E6%9C%AC&logo=velog&logoColor=BE95FF"></img>
 <img alt="stars" src="https://img.shields.io/github/stars/ikznbfin/EasyCSDN?style=for-the-badge&label=Stars&logo=undertale&logoColor=red&color=orange"></img>
 <img alt="forks" src="https://img.shields.io/github/forks/ikznbfin/EasyCSDN?style=for-the-badge&label=Forks&logo=stackshare&logoColor=green&color=0AC18E"></img>
 <img alt="javascript" src="https://img.shields.io/badge/JavaScript-%3E%3DES13-green?style=for-the-badge&label=JavaScript&logo=JavaScript&color=FDEE21"></img>
@@ -50,11 +50,14 @@ EasyCSDN 是一款让 CSDN 文章页变得极致简洁高效的 Tampermonkey 油
 1. 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/) 扩展；
 2. 点击下面的安装链接，按提示安装脚本：
 
-👉 [点击安装 EasyCSDN v34.0](https://raw.githubusercontent.com/ikznbfin/EasyCSDN/main/EasyCSDN.user.js)
+👉 [点击安装 EasyCSDN v34.1](https://raw.githubusercontent.com/ikznbfin/EasyCSDN/main/EasyCSDN.user.js)
 
 3. 打开任意 CSDN 文章页（`blog.csdn.net/*/article/details/*`）即可生效，无需任何配置。
 
 ## 更新日志
+
+### v34.1（2026-10-14）
+- 修复 `@downloadURL` / `@updateURL` 仍指向上游 GreasyFork 的问题，改为本 fork 的 raw 地址，Tampermonkey 检查更新不再被下回旧版
 
 ### v34.0（2026-10-14）
 去广告力度加强，新增一整组隐藏规则：

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EasyCSDN
 // @description  这是一款促进CSDN极致简洁和高效的插件。免费共享大量创新功能，如：净化页面、展示全屏、显示推荐、复制文本、展开代码等。让我们的学习体验无比简洁、专注、高效、畅快。
-// @version      34.0
+// @version      34.1
 // @author       xcanwin
 // @namespace    https://github.com/xcanwin/EasyCSDN/
 // @supportURL   https://github.com/xcanwin/EasyCSDN/
@@ -10,8 +10,8 @@
 // @match        *://*.blog.csdn.net/article/details/*
 // @grant        GM_addStyle
 // @run-at       document-start
-// @downloadURL https://update.greasyfork.org/scripts/480668/EasyCSDN.user.js
-// @updateURL https://update.greasyfork.org/scripts/480668/EasyCSDN.meta.js
+// @downloadURL https://raw.githubusercontent.com/ikznbfin/EasyCSDN/main/EasyCSDN.user.js
+// @updateURL https://raw.githubusercontent.com/ikznbfin/EasyCSDN/main/EasyCSDN.user.js
 // ==/UserScript==
 
 (function() {
