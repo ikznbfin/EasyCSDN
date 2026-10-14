@@ -54,6 +54,12 @@ EasyCSDN 是一款让 CSDN 文章页变得极致简洁高效的 Tampermonkey 油
 
 3. 打开任意 CSDN 文章页（`blog.csdn.net/*/article/details/*`）即可生效，无需任何配置。
 
+## 常见问题
+
+**脚本装了但完全没效果？**
+
+Chrome 138+ 新增了限制：先到 `chrome://extensions` → 找到 Tampermonkey → 点"详情" → 打开**"允许用户脚本"**开关。不开这个，Tampermonkey 无法执行任何脚本，表现为装了跟没装一样。
+
 ## 更新日志
 
 ### v34.1（2026-10-14）
