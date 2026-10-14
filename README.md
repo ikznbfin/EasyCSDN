@@ -18,6 +18,8 @@
 
 ## 项目简介
 
+> **Fork 维护说明（v33.0, 2026-10-14）**：原项目已三年未更新，针对新版 CSDN 页面做了适配：`#toolbarBox` 改名为 `#toolBarBox`（顶部菜单栏重新可隐藏）；`beautyLOGO()` 加空指针保护（新版页面无 `.article-type-img`，此前会导致整个 `onload` 链崩溃、展开代码/显示推荐功能全部失效）；`window.onload` 改为 `addEventListener` 避免覆盖页面自身处理器；`showRecommend()`/`hookXHR()` 加防御性判断。净化、推荐开关、URL 净化等核心功能已用真实页面验证可用。
+
 - 喜欢这个插件的小伙伴，可以给我的GITHUB项目 [EasyCSDN](https://github.com/xcanwin/EasyCSDN) 点个⭐️STAR支持一下。
 - 这是一款促进 `CSDN` 极致简洁和高效的插件。免费共享大量创新功能，如：净化页面、展示全屏、显示推荐、复制文本、展开代码、阅读全文等。让我们的学习体验无比简洁、专注、高效、畅快。
 - `知乎` 和 `CSDN` 和 `简书` 和 `博客园` 是技术覆盖面非常广的学习网站，推荐安装作者共享的 `Easy系列` 插件：[EasyZHIHU](https://github.com/xcanwin/EasyZHIHU/) 与 [EasyCSDN](https://github.com/xcanwin/EasyCSDN/) 与 [EasyJIANSHU](https://github.com/xcanwin/EasyJIANSHU/) 与 [EasyCNBLOGS](https://github.com/xcanwin/EasyCNBLOGS/)。

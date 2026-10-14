@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EasyCSDN
 // @description  这是一款促进CSDN极致简洁和高效的插件。免费共享大量创新功能，如：净化页面、展示全屏、显示推荐、复制文本、展开代码等。让我们的学习体验无比简洁、专注、高效、畅快。
-// @version      32.0
+// @version      33.0
 // @author       xcanwin
 // @namespace    https://github.com/xcanwin/EasyCSDN/
 // @supportURL   https://github.com/xcanwin/EasyCSDN/
@@ -24,7 +24,8 @@
     const purify_style_pc = `
 .passport-login-container /*隐藏[置顶的]登录提示*/,
 .passport-login-tip-container /*隐藏[置顶的]登录权益提示*/,
-body>#toolbarBox /*隐藏[置顶的][顶部的]菜单栏*/,
+body>#toolbarBox /*隐藏[置顶的][顶部的]菜单栏(旧版)*/ ,
+body>#toolBarBox /*隐藏[置顶的][顶部的]菜单栏(新版)*/ ,
 .left-toolbox /*隐藏[置顶的][底部的]关注栏*/,
 .blog_container_aside /*隐藏[左边的]栏*/,
 #rightAside /*隐藏[右边的]栏*/,
@@ -160,15 +161,20 @@ body {
 
     //显示推荐的开关
     const showRecommend = function() {
+        const mainEl = $('main');
+        const recBox = $('.recommend-box');
+        if (!mainEl || !recBox) {
+            return;
+        }
         const sr = document.createElement("div");
         sr.style = "height: 64px; background-color: #eaeaea;";
         sr.onclick = function() {
             $$(".recommend-box").forEach(el => {
                 el.classList.toggle("show-temp");
             });
-            $(".recommend-box")?.scrollIntoView();
+            recBox.scrollIntoView();
         };
-        $('main').insertBefore(sr, $('.recommend-box'));
+        mainEl.insertBefore(sr, recBox);
     };
 
     //展开代码
@@ -194,22 +200,26 @@ body {
         const block_url = 'redisdatarecall\.csdn\.net/recommend/';
         XMLHttpRequest.prototype.open = function() {
             const reqUrl = arguments[1];
-            if (reqUrl.match(block_url)){
+            if (typeof reqUrl === 'string' && reqUrl.match(block_url)){
                 return;
             }
-            origOpen.apply(this, arguments);
+            return origOpen.apply(this, arguments);
         };
     };
 
-    //调整头像
+    //调整头像(新版CSDN已移除.article-type-img, 保留兼容逻辑)
     const beautyLOGO = function() {
-        $('.article-type-img').src = $('link[rel="shortcut icon"]').href;
-        $('.article-type-img').style = 'display: block !important;';
+        const img = $('.article-type-img');
+        const icon = $('link[rel="shortcut icon"]');
+        if (img && icon) {
+            img.src = icon.href;
+            img.style = 'display: block !important;';
+        }
     };
 
     //净化URL, 保障用户信息安全
     const prettyURL = function() {
-        let newurl = location.href.match('(https?://.*?blog\.csdn\.net/.*?article/details/.*?)\\?');
+        let newurl = location.href.match('(https?://.*?blog\\.csdn\\.net/.*?article/details/.*?)\\?');
         if (newurl) {
             newurl = newurl[1];
             window.history.replaceState({
@@ -218,11 +228,11 @@ body {
         }
     };
 
-    window.onload = function() {
+    window.addEventListener('load', function() {
         beautyLOGO();
         prettyCode();
         showRecommend();
-    };
+    });
 
     purifyPage();
     prettyURL();
